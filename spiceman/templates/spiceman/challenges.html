@@ -1,0 +1,48 @@
+
+<div class="box">
+
+
+{% if challenges %}
+    {%for challenge in challenges %}
+        {% if challenge.isweekly %}
+
+        {%else%}
+            <p>{{challenge.post_text}} <br>
+
+
+                    <p>{{challenge.post_text}} <br>
+                
+                    <h1 class="subtitle is-3">{{challenge.title}}   <a class="button is-danger" href="{% url 'spiceman:challenge_page' challenge.id %}">start challenge </a> 
+                 
+
+                    {% with ''|center:challenge.difficulty as range %}
+                        {% for _ in range %}
+                     <i class="fa-solid fa-pepper-hot" style="color: #e66363;"></i>
+                     {%endfor%}
+
+                    {% endwith %}
+                   
+
+                
+                
+                
+                 </h1> 
+                    
+                        <small>{{challenge.author.username}}  {{challenge.creation_date}} 
+    
+                        {% if request.user in challenge.likers.all %}
+                        <a href="{% url 'spiceman:like' challenge.id %}"><i class="fa-solid fa-heart" style="color: #ff4013;"></i></a> {{challenge.likers.count}}
+                     {% else %} 
+                            <a href="{% url 'spiceman:like' challenge.id %}"><i class="fa-regular fa-heart" style="color: #000000;"></i></a> {{challenge.likers.count}}
+                    {% endif %}
+                        {% if request.user == challenge.author %}
+                            <a href="{% url 'spiceman:delete' challenge.id %}"><i class="fa-regular fa-trash-can" style="color: #000000;"></i></a>
+                    {% endif %}
+                        </small>
+        
+     </p> 
+     {%endif%}
+    {%endfor%}
+{% else %}
+    No challenges to show
+{% endif %}

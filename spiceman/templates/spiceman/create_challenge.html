@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/118169d3f5.js" crossorigin="anonymous"></script>
+
+    <title>add_challenge</title>
+
+</head>
+
+
+<body>
+    
+  
+    <section class="section">
+        <h1 class="title">Hi {{request.user}}, ready to add a new challenge?</h1>
+            <form   enctype="multipart/form-data" action="{% url 'spiceman:create_challenge' %}" method="POST" class="box">
+                {% csrf_token %}
+        
+                <div class="field">
+                    <label class="label"></label>
+                    <div class="control">
+                        <input class="input" type="text" name="title" placeholder="enter title" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label"></label>
+                    <div class="control">
+                        <input class="input" type="text" name="text" placeholder="enter challenge conditions" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label"></label>
+                    <div class="control">
+                        <input class="input" type="number" max="5" min="1" name="chilli_number" placeholder="enter spice rating (difficulty)" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label"></label>
+                    <div class="control">
+                        <input class="input" type="text" name="challenge_answer_text" placeholder="enter answer (text)" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Upload Answer Image</label>
+                    <div class="control">
+                        <input class="input" type="file" name="challenge_answer_image" id="challenge_answer_image" placeholder="enter answer (image)" accept="image/*" >
+                    </div>
+                </div>
+        
+        
+                {% if request.user.is_staff %}
+                <input type="checkbox" name="weekly_challenges" placeholder="is the Challenge weekly" /> is challenge weekly
+                {% endif %}
+                <div class="field">
+                    <button class="button is-danger" type="submit">Add challenge</button>
+                </div>
+        
+            </form>
+    </section>
+
+    
+</body>
+</html>
+
+
