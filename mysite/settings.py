@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-!d_^ndd8a&e25yr_14wvn-v^w)a*+uc5@9l_0(us4o2+xhrwvc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'spiceman.pythonanywhere.com']
 
 
 # Application definition
@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'polls.apps.PollsConfig',
-    'Y.apps.YConfig',
+    # 'polls.apps.PollsConfig',
+    # 'Y.apps.YConfig',
     'spiceman.apps.SpicemanConfig'
 ]
 
