@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/118169d3f5.js" crossorigin="anonymous"></script>
+    <title>Homepage</title>
+</head>
+<body>
+    Big changes here 
+    
+    {{request.user.username}} (<a href="{% url 'spiceman:logout' %}">Log Out</a>)
+
+    <a href="{% url 'spiceman:create_challenge_page' %}"><i class="fa-solid fa-plus" style="color: #ff4013;"></i></a>
+    
+    
+    {% include 'spiceman/weekly_challenges.html' %}
+
+
+    
+
+
+    <form class="box"action="{% url 'spiceman:search' %}" method="get">
+        <h2 class="title">user made challenges</h2>
+    
+        <p>
+            <input type="text" name="search_bar" placeholder="Search for challenges">
+            <input type="submit" value="Search">
+        </p>
+
+
+    {% if not search_results %}
+        No matches found
+    {% endif %}
+    {% include 'spiceman/challenges.html' %}
+
+</form>
+</body>
+</html>
+

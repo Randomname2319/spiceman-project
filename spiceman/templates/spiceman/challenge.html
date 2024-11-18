@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/118169d3f5.js" crossorigin="anonymous"></script>
+    <title>{{challenge.title}}</title>
+</head>
+<body>
+
+    <h1 class="title">{{challenge.title}}</h1>
+    
+
+    <h1 class="title is-4" >challenge conditions</h1>
+    <div class="box"> {{challenge.text}}</div>
+
+    <button class="button is-large is-fullwidth" class="button is-danger">Find answer</button>
+
+    <p>start of image</p>
+    {% if challenge.answer_image %}
+    
+        {{challenge.answer_image.url|slice:"1:"}}
+        <img src="/{{challenge.answer_image.url|slice:'1:'}}" alt="" srcset="">
+    {% endif %}
+    <p>end of image</p>
+    
+    {{challenge.answer_text}}
+    
+
+    {% include 'spiceman/comments.html' %}
+</body>
+</html>

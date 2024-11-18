@@ -1,0 +1,40 @@
+
+
+
+    <form action="{% url 'spiceman:post_comment' challenge.id %}" method="post" class="box">
+        {% csrf_token %} 
+        <div class="field">
+          <label class="label"></label>
+          <div class="control">
+            <input class="input" name="comment_text" type="text" placeholder="enter comments here" />
+          </div>
+        </div>
+    
+      
+        <input type="submit" class="button is-danger" value="submit comment">
+      </form>
+
+
+        {%for comment in comment_set.all %}
+        
+        <small>{{comment.author.username}}  {{comment.creation_date}} 
+    
+          {% if request.user in comment.likers.all %}
+          <a href="{% url 'spiceman:comment_like' comment.id %}"><i class="fa-solid fa-heart" style="color: #ff4013;"></i></a> {{comment.likers.count}}
+       {% else %} 
+              <a href="{% url 'spiceman:comment_like' comment.id %}"><i class="fa-regular fa-heart" style="color: #000000;"></i></a> {{comment.likers.count}}
+      {% endif %}
+          {% if request.user == comment.author %}
+              <a href="{% url 'spiceman:delete_comment' comment.id %}"><i class="fa-regular fa-trash-can" style="color: #000000;"></i></a>
+      {% endif %}
+          </small>
+
+
+
+
+
+            
+
+        {% endfor %}
+
+    
