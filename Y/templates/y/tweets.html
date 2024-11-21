@@ -1,0 +1,15 @@
+{%for tweet in tweets %}
+<p>{{tweet.post_text}} <br>
+    <small><a href="{% url 'Y:user_page' tweet.author.username %}">{{tweet.author.username}}</a> {{tweet.post_date}} 
+    {% if request.user in tweet.likers.all %}
+        <a href="{% url 'Y:like' tweet.id %}">Unlike</a> ({{tweet.likers.count}}) 
+    {% else %}
+        <a href="{% url 'Y:like' tweet.id %}">Like</a> ({{tweet.likers.count}}) 
+    {% endif %}
+    {% if request.user == Tweet.author%}
+        <a href="{ url 'Y:delete' tweet.author}">delete</a>
+    {% endif %}
+</small>
+ </p> 
+{%endfor%}
+

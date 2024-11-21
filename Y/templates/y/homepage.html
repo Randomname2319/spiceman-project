@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <h1>Welcom to Y</h1>
+    <form action="{% url 'Y:post_tweet' %}" method="post">
+        {% csrf_token %}
+        <p><input type="text" name="tweet_text"> <input type="submit" name="post_button" value="Post Tweet"> </p>
+    
+
+    </form>
+
+    <form action="{% url 'Y:search' %}" method="GET">
+        <p><input type="text" name="hash" id="hash" placeholder="Search e.g. #coding">
+            <input type="submit" value="Search"></p>
+    </form>
+
+    {% include 'y/tweets.html' %}
+
+    
+
+</body>
+</html>

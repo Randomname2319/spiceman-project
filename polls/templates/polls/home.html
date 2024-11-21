@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Express yourself. Your voice matters</h1>
+
+    {% if questions %}
+    {% for question in questions %} 
+        <a href="{ url 'polls:detail' question.id %}">
+            <P>{{question. question_ text}}</P>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Sign Up</h2>
+    <form action="{% url 'Y:signup' %}"  method="post">
+        {% csrf_token %}
+        <p><input type="text" name="username"></p>
+        <p><input type="password" name="password" ></p>
+        <p><input type="submit" value="Sign Up"></p>
+
+    </form>
+
+    <h2>Log In</h2>
+    <form action="{% url 'Y:authenticate' %}" method="post">
+        {% csrf_token %}
+        <p><input type="text" name="username"></p>
+        <p><input type="password" name="password" ></p>
+        <p><input type="submit" value="Log In"></p>
+
+        
+    </form>
+</body>
+</html>
+
